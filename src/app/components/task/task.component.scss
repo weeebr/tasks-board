@@ -1,0 +1,24 @@
+.task {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: rgba(66, 82, 110, 1);
+  cursor: grab;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e2e8f0;
+  box-sizing: border-box;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  border-radius: 0.125rem;
+  background-color: white;
+  transition-property: all;
+  transition-duration: 100ms;
+  user-select: none;
+  padding: 10px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 2px 0px;
+
+  &:hover {
+    background: #ebecf0;
+  }
+}

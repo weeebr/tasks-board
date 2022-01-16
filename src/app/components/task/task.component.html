@@ -1,0 +1,7 @@
+<div class="task"
+  [class.file-over]="dragIsOver"
+  draggable="true"
+  (dragstart)="onDrag($event)"
+  >
+  {{ task.title }}
+</div>

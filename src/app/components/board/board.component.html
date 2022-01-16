@@ -1,0 +1,10 @@
+<div class="board">
+  <ng-container *ngFor="let col of boardData.columns">
+    <div class="board-column">
+      <span class="column-title" [style.border-color]="col.color">{{ col.name }}</span>
+      <ng-container *ngFor="let area of col.areas">
+        <app-tasks-area [title]="area.name" [tasks]="area.tasks"></app-tasks-area>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
