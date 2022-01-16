@@ -2,8 +2,12 @@
   margin-top: 20px;
 
   .task-area {
-    .tasks.is-dragover {
-      border: 2px dashed grey;
+    .tasks {
+      padding-top: 5px;
+
+      &.is-dragover {
+        border: 2px dashed grey;
+      }
     }
 
     .title {

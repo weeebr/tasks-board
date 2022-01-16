@@ -37,10 +37,15 @@ export class BoardComponent implements OnInit {
         },
         { idx: 5, name: "2022", tasks: [
             { title: "My Task", description: "Description" },
+            { title: "Task 2", description: "Description" }
+          ]
+        },
+        { idx: 6, name: "Someday", tasks: [
+            { title: "My Task", description: "Description" },
             { title: "Another Task", description: "Description" },
             { title: "Task 3", description: "Description" }
           ]
-        }],
+        }]
       },
       { name: "Freunde + Soziales", color: '#9c27b0', areas: [
         { idx: 0, name: "Today", tasks: [
@@ -70,6 +75,11 @@ export class BoardComponent implements OnInit {
           ]
         },
         { idx: 5, name: "2022", tasks: [
+            { title: "My Task", description: "Description" },
+            { title: "Task 2", description: "Description" }
+          ]
+        },
+        { idx: 6, name: "Someday", tasks: [
             { title: "My Task", description: "Description" },
             { title: "Another Task", description: "Description" },
             { title: "Task 3", description: "Description" }
@@ -105,6 +115,11 @@ export class BoardComponent implements OnInit {
         },
         { idx: 5, name: "2022", tasks: [
             { title: "My Task", description: "Description" },
+            { title: "Task 2", description: "Description" }
+          ]
+        },
+        { idx: 6, name: "Someday", tasks: [
+            { title: "My Task", description: "Description" },
             { title: "Another Task", description: "Description" },
             { title: "Task 3", description: "Description" }
           ]
@@ -139,10 +154,15 @@ export class BoardComponent implements OnInit {
         },
         { idx: 5, name: "2022", tasks: [
             { title: "My Task", description: "Description" },
+            { title: "Task 2", description: "Description" }
+          ]
+        },
+        { idx: 6, name: "Someday", tasks: [
+            { title: "My Task", description: "Description" },
             { title: "Another Task", description: "Description" },
             { title: "Task 3", description: "Description" }
           ]
-        }],
+        }]
       },
       { name: "💪⚕️ + Fitness", color: '#8bc34a', areas: [
         { idx: 0, name: "Today", tasks: [
@@ -172,6 +192,11 @@ export class BoardComponent implements OnInit {
           ]
         },
         { idx: 5, name: "2022", tasks: [
+            { title: "My Task", description: "Description" },
+            { title: "Task 2", description: "Description" }
+          ]
+        },
+        { idx: 6, name: "Someday", tasks: [
             { title: "My Task", description: "Description" },
             { title: "Another Task", description: "Description" },
             { title: "Task 3", description: "Description" }
