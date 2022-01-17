@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { tasks } from "../constants/data-mockup";
+import { boardData } from "../constants/data-mockup";
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,11 @@ export class BoardDataService {
   boardData: [];
 
   constructor() {
-    this.boardData = this.getBoardData();
+    this.boardData = boardData;
    }
 
   getBoardData() {
-    return JSON.parse(sessionStorage.getItem('board-data'));
+    return boardData //JSON.parse(sessionStorage.getItem('board-data'));
   }
 
   setBoardData(data) {

@@ -59,6 +59,13 @@ export class TaskService {
   }
 
   deleteTask(task) {
-    this.setTasks(this._tasks.value.filter(t => !isEqual(t, task)));
+    const tasks = Array.from(this._tasks.value);
+    const taskIdx = tasks.findIndex((t: any) => t.colIdx === task.colIdx && t.areaIdx === task.areaIdx && t.title === task.title);
+    tasks.splice(taskIdx, 1);
+    console.log(this._tasks.value, tasks);
+    if (tasks.length > 0) {
+      this.setTasks(tasks);
+    }
+    this.setTasks([]);
   }
 }

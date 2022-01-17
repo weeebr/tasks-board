@@ -56,7 +56,9 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   getAreaTasks(colIdx, areaIdx) {
-    return this.tasks && this.tasks.length > 0 && this.tasks.filter(t => t.colIdx === colIdx && t.areaIdx === areaIdx);
+    return this.tasks && this.tasks.length > 0
+    ? this.tasks.filter(t => t.colIdx === colIdx && t.areaIdx === areaIdx)
+    : [];
   }
 
   ngOnDestroy(): void {
