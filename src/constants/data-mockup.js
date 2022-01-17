@@ -49,13 +49,96 @@ const boardData = {
 };
 
 const tasks = [
-  { title: "Another Task", description: "Description", colIdx: 0, areaIdx: 0 },
-  { title: "Another Task", description: "Description", colIdx: 2, areaIdx: 2 },
-  { title: "Another Task", description: "Description", colIdx: 3, areaIdx: 4 },
-  { title: "Another Task", description: "Description", colIdx: 4, areaIdx: 0 },
-  { title: "Another Task", description: "Description", colIdx: 4, areaIdx: 0 },
-  { title: "Another Task", description: "Description", colIdx: 2, areaIdx: 6 },
-  { title: "Another Task 3", description: "Description", colIdx: 1, areaIdx: 6 },
-];
+  {
+      "areaIdx": 0,
+      "colIdx": 0,
+      "title": "Schneiderin"
+  },
+  {
+      "areaIdx": 0,
+      "colIdx": 0,
+      "title": "MSC"
+  },
+  {
+      "areaIdx": 1,
+      "colIdx": 0,
+      "title": "Einscannen"
+  },
+  {
+      "areaIdx": 1,
+      "colIdx": 1,
+      "title": "Normal News"
+  },
+  {
+      "areaIdx": 0,
+      "colIdx": 4,
+      "title": "Spiegelritual"
+  },
+  {
+      "areaIdx": 0,
+      "colIdx": 4,
+      "title": "Zähneputzen"
+  },
+  {
+      "areaIdx": 1,
+      "colIdx": 4,
+      "title": "No weed"
+  },
+  {
+      "areaIdx": 1,
+      "colIdx": 4,
+      "title": "Migros"
+  },
+  {
+      "areaIdx": 3,
+      "colIdx": 3,
+      "title": "Finance News"
+  },
+  {
+      "areaIdx": 1,
+      "colIdx": 4,
+      "title": "Kochen"
+  },
+  {
+      "areaIdx": 1,
+      "colIdx": 0,
+      "title": "Kredit 4.7%"
+  },
+  {
+      "areaIdx": 1,
+      "colIdx": 0,
+      "title": "Brot einkaufen"
+  },
+  {
+      "areaIdx": 0,
+      "colIdx": 0,
+      "title": "Therapie"
+  },
+  {
+      "areaIdx": 0,
+      "colIdx": 0,
+      "title": "Bettrecherche"
+  },
+  {
+      "areaIdx": 4,
+      "colIdx": 4,
+      "title": "Zahnseide"
+  },
+  {
+      "areaIdx": 4,
+      "colIdx": 0,
+      "title": "#1 Goal in Life"
+  },
+  {
+      "areaIdx": 4,
+      "colIdx": 0,
+      "title": "#1 Goal next months"
+  },
+  {
+      "areaIdx": 4,
+      "colIdx": 3,
+      "title": "PostFinance kündigen"
+  }
+]
 
 export { boardData, tasks }
