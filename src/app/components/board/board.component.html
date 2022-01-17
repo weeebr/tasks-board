@@ -1,9 +1,20 @@
 <div class="board">
-  <ng-container *ngFor="let col of boardData.columns">
-    <div class="board-column">
-      <span class="column-title" [style.border-color]="col.color">{{ col.name }}</span>
-      <ng-container *ngFor="let area of col.areas">
-        <app-tasks-area [title]="area.name" [tasks]="area.tasks"></app-tasks-area>
+  <ng-container *ngFor="let col of boardData.columns; let colIdx = index">
+    <div class="board-column"
+    [attr.data-col-idx]="colIdx"
+    [class.is-dragover]="isDragOverCurrent(colIdx)"
+    >
+      <span class="column-title" (drop)="onDrop($event)"
+      (dragleave)="onDragLeave($event)"
+      (dragover)="onDragOver($event)" [style.border-color]="col.color">{{ col.name }}</span>
+      <ng-container *ngFor="let area of col.areas; let areaIdx = index">
+        <app-tasks-area
+        [area]="area"
+        [areaIdx]="areaIdx"
+        [colIdx]="colIdx"
+        [draggedOverColIdx$]="draggedOverColIdx$"
+        [tasks]="getAreaTasks(colIdx, areaIdx)">
+      </app-tasks-area>
       </ng-container>
     </div>
   </ng-container>

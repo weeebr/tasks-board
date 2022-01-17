@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TaskService } from '../../task.service';
 
 @Component({
   selector: 'app-task',
@@ -7,19 +8,32 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
   @Input() task: any;
-  dragIsOver: boolean = true;
+  isDragOver = false;
+  isHovered = false;
 
-
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
   }
 
-
-
   onDrag(event: DragEvent) {
-    event.dataTransfer.setData("text", event.toString());
+    this.taskService.setDragEvent(event);
+    event.dataTransfer.setData("task-info", this.getTaskInfo());
   }
 
+  onMouseLeave(event) {
+    this.isHovered = false;
+  }
 
+  onMouseEnter(event) {
+    this.isHovered = true;
+  }
+
+  deleteTask(task) {
+    this.taskService.deleteTask(task);
+  }
+
+  getTaskInfo() {
+    return JSON.stringify(this.task);
+  }
 }

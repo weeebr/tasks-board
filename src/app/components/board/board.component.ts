@@ -1,220 +1,68 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { TaskService } from '../../task.service';
+import { BoardDataService } from "./../../board-data.service";
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent implements OnInit {
-  boardData = {
-    columns: [
-      { name: "Ich (🧠⚕️ + Tasks)", color: '#2196f3', areas: [
-        { idx: 0, name: "Today", tasks: [
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 1, name: "Tomorrow", tasks: [
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 2, name: "This week", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 3, name: "Next monday", tasks: [
-            { title: "Really another task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 4, name: "This month", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Task 2", description: "Description" }
-          ]
-        },
-        { idx: 5, name: "2022", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Task 2", description: "Description" }
-          ]
-        },
-        { idx: 6, name: "Someday", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        }]
-      },
-      { name: "Freunde + Soziales", color: '#9c27b0', areas: [
-        { idx: 0, name: "Today", tasks: [
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 1, name: "Tomorrow", tasks: [
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 2, name: "This week", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 3, name: "Next monday", tasks: [
-            { title: "Really another task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 4, name: "This month", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Task 2", description: "Description" }
-          ]
-        },
-        { idx: 5, name: "2022", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Task 2", description: "Description" }
-          ]
-        },
-        { idx: 6, name: "Someday", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        }]
-      },
-      { name: "Familie + Partnerschaft", color: '#e91e63', areas: [
-        { idx: 0, name: "Today", tasks: [
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 1, name: "Tomorrow", tasks: [
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 2, name: "This week", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 3, name: "Next monday", tasks: [
-            { title: "Really another task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 4, name: "This month", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Task 2", description: "Description" }
-          ]
-        },
-        { idx: 5, name: "2022", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Task 2", description: "Description" }
-          ]
-        },
-        { idx: 6, name: "Someday", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        }]
-      },
-      { name: "Beruf + Finanzen", color: '#fdd835', areas: [
-        { idx: 0, name: "Today", tasks: [
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 1, name: "Tomorrow", tasks: [
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 2, name: "This week", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 3, name: "Next monday", tasks: [
-            { title: "Really another task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 4, name: "This month", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Task 2", description: "Description" }
-          ]
-        },
-        { idx: 5, name: "2022", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Task 2", description: "Description" }
-          ]
-        },
-        { idx: 6, name: "Someday", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        }]
-      },
-      { name: "💪⚕️ + Fitness", color: '#8bc34a', areas: [
-        { idx: 0, name: "Today", tasks: [
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 1, name: "Tomorrow", tasks: [
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 2, name: "This week", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 3, name: "Next monday", tasks: [
-            { title: "Really another task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        },
-        { idx: 4, name: "This month", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Task 2", description: "Description" }
-          ]
-        },
-        { idx: 5, name: "2022", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Task 2", description: "Description" }
-          ]
-        },
-        { idx: 6, name: "Someday", tasks: [
-            { title: "My Task", description: "Description" },
-            { title: "Another Task", description: "Description" },
-            { title: "Task 3", description: "Description" }
-          ]
-        }]
-      }
-    ]
-  };
+export class BoardComponent implements OnInit, OnDestroy {
+  private unsubscribeCollector: Subject<any> = new Subject();
 
-  constructor() { }
+  draggedOverColIdx: any;
+
+  private _draggedOverColIdx: Subject <number> = new Subject();
+  draggedOverColIdx$ = this._draggedOverColIdx.asObservable();
+  tasks: any;
+  boardData: any;
+
+  constructor(private taskService: TaskService, private boardDataService: BoardDataService) { }
 
   ngOnInit(): void {
+    this.taskService.tasks$.pipe(takeUntil(this.unsubscribeCollector)).subscribe(tasks => {
+      this.tasks = tasks;
+    });
+
+    this.boardData = this.boardDataService.getBoardData();
   }
 
-  getAreasOrderedByIdx(col: any) {
-    return col.areas.sort((a: any, b: any) => a.idx - b.idx);
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("task-info");
+    const task = JSON.parse(data);
+    // this.taskService.setDraggedTask(task);
+    // this.currentIsDraggedOver = false;
+
+    // this.taskService.setIsDragOver(false);
   }
 
+  isDragOverCurrent(colIdx) {
+    return this.draggedOverColIdx === colIdx;
+  }
+
+
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    const target = event.target as HTMLElement;
+    const idx = target.getAttribute('data-col-idx');
+    this._draggedOverColIdx.next(Number.parseInt(idx));
+  }
+
+  onDragLeave() {
+    // this.draggedOverColIdx = null;
+  }
+
+  getAreaTasks(colIdx, areaIdx) {
+    return this.tasks && this.tasks.length > 0 && this.tasks.filter(t => t.colIdx === colIdx && t.areaIdx === areaIdx);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribeCollector.next();
+    this.unsubscribeCollector.complete();
+  }
 }
 
 

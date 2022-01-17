@@ -1,7 +1,11 @@
 <div class="task"
-  [class.file-over]="dragIsOver"
+  [class.file-over]="isDragOver"
+  [class.is-hovered]="isHovered"
+  (mouseleave)="onMouseLeave($event)"
+  (mouseenter)="onMouseEnter($event)"
   draggable="true"
   (dragstart)="onDrag($event)"
   >
   {{ task.title }}
+  <button class="delete-task" (click)="deleteTask(task)"><span>🗸</span></button>
 </div>

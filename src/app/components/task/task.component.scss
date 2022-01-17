@@ -17,8 +17,30 @@
   user-select: none;
   padding: 10px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 2px 0px;
+  position: relative;
 
   &:hover {
     background: #ebecf0;
+  }
+
+  &.is-hovered {
+    button.delete-task {
+      display: block;
+    }
+  }
+
+  button.delete-task {
+    display: none;
+    position: absolute;
+    right: 8px;
+    top: 7px;
+    border: none;
+    border-radius: 4px;
+    background: white;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgb(0 0 0 / 17%);
+    }
   }
 }

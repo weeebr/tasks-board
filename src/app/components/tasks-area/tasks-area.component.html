@@ -1,12 +1,23 @@
-<div class="task-area">
-  <div class="title">{{title}}</div>
-  <div class="tasks"
-    [class.is-dragover]="isDragOver"
-    (drop)="onDrop($event)"
-    (dragover)="onDragOver($event)">
-
-    <ng-container *ngFor="let task of tasks">
-      <app-task [task]="task"></app-task>
-    </ng-container>
+<div class="task-area"
+  [class.is-hovered]="isHovered"
+  (drop)="onDrop($event)"
+  (dragleave)="onDragLeave($event)"
+  (dragover)="onDragOver($event)"
+  (mouseover)="onMouseOver($event)"
+  (mouseleave)="onMouseLeave($event)"
+  [class.current-is-dragover]="currentIsDraggedOver">
+  <div class="title">{{ area.name }}</div>
+  <div
+    [attr.data-area-idx]="areaIdx"
+    [attr.data-col-idx]="colIdx" class="tasks"
+    [class.is-dragover]="isDragOver">
+      <ng-container *ngFor="let task of tasks">
+        <app-task [task]="task"></app-task>
+      </ng-container>
+  </div>
+  <div class="add-task-area" (click)="addTask({areaIdx, colIdx})">
+    <button class="add-task">
+      <span>+</span>
+    </button>
   </div>
 </div>
