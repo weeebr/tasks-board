@@ -16,9 +16,9 @@
     &.is-dragover {
       background: white;
 
-      .task-area:first-child .tasks {
+      app-task-area:first-child .tasks {
         min-height: 10px;
-        border: 2px dashed grey;
+        border: 2px dashed blue;
       }
     }
 

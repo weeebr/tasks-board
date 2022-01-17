@@ -17,7 +17,7 @@ export class TaskComponent implements OnInit {
   }
 
   onDrag(event: DragEvent) {
-    this.taskService.setDragEvent(event);
+    this.taskService.setIsDragOver(false);
     event.dataTransfer.setData("task-info", this.getTaskInfo());
   }
 

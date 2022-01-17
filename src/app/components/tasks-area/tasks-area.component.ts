@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { TaskAreaService } from '../../task-area.service';
 import { TaskService } from '../../task.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class TasksAreaComponent implements OnInit, OnDestroy {
   isDragOver: boolean;
   isHovered = false;
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private taskAreaService: TaskAreaService) { }
 
   ngOnInit(): void {
     this.taskService.isDragOver$.pipe(takeUntil(this.unsubscribeCollector)).subscribe(flag => {
@@ -32,12 +33,15 @@ export class TasksAreaComponent implements OnInit, OnDestroy {
     this.draggedOverColIdx$.pipe(takeUntil(this.unsubscribeCollector)).subscribe(idx => {
       this.currentIsDraggedOver = idx === this.colIdx && this.areaIdx === 0;
     });
+
+    this.taskAreaService.unhoverAll$.pipe(takeUntil(this.unsubscribeCollector)).subscribe(idx => {
+      this.isHovered = false;
+    });
   }
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
     this.currentIsDraggedOver = true;
-    this.taskService.setIsDragOver(true);
   }
 
   onDragLeave(event) {
@@ -50,11 +54,10 @@ export class TasksAreaComponent implements OnInit, OnDestroy {
     const task = JSON.parse(data);
     const target = event.target as HTMLElement;
     const colIdx = Number.parseInt(target.getAttribute('data-col-idx'));
-    const areaIdx = Number.parseInt(target.getAttribute('data-col-idx'));
+    const areaIdx = Number.parseInt(target.getAttribute('data-area-idx'));
     this.taskService.setDraggedTask({...task, colIdx, areaIdx});
     this.currentIsDraggedOver = false;
-
-    this.taskService.setIsDragOver(false);
+    this.taskService.setIsDragOver(true);
   }
 
   addTask(task: any) {
@@ -63,6 +66,7 @@ export class TasksAreaComponent implements OnInit, OnDestroy {
   }
 
   onMouseOver(event) {
+    this.taskAreaService.unhoverAll();
     this.isHovered = true;
   }
 

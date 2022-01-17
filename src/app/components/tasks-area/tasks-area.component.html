@@ -1,6 +1,8 @@
 <div class="task-area"
   [class.is-hovered]="isHovered"
   (drop)="onDrop($event)"
+  [attr.data-area-idx]="areaIdx"
+  [attr.data-col-idx]="colIdx"
   (dragleave)="onDragLeave($event)"
   (dragover)="onDragOver($event)"
   (mouseover)="onMouseOver($event)"
@@ -8,8 +10,10 @@
   [class.current-is-dragover]="currentIsDraggedOver">
   <div class="title">{{ area.name }}</div>
   <div
+    class="tasks"
     [attr.data-area-idx]="areaIdx"
-    [attr.data-col-idx]="colIdx" class="tasks"
+    [attr.data-col-idx]="colIdx"
+    (drop)="onDrop($event)"
     [class.is-dragover]="isDragOver">
       <ng-container *ngFor="let task of tasks">
         <app-task [task]="task"></app-task>

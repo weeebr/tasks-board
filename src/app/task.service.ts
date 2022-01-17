@@ -19,10 +19,6 @@ export class TaskService {
   private _isDragOver: BehaviorSubject <any> = new BehaviorSubject(false);
   isDragOver$ = this._isDragOver.asObservable();
 
-  private _dragEvent: BehaviorSubject <any> = new BehaviorSubject(false);
-  dragEvent$ = this._dragEvent.asObservable();
-  draggedTask: any;
-
   constructor() {
     this._tasks.next(this.getTasks());
    }
@@ -31,14 +27,11 @@ export class TaskService {
     this._isDragOver.next(flag);
   }
 
-  setDragEvent(event) {
-    this._dragEvent.next(event);
-  }
-
   setDraggedTask(task) {
-    this.draggedTask = task;
-    console.log(task, [...this._tasks.value, task]);
-    this.setTasks([...this._tasks.value, task]);
+    if (task.colIdx && task.areaIdx) {
+      this.deleteTask(task);
+      this.setTasks([...this._tasks.value, task]);
+    }
   }
 
   getTasks() {

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { TaskService } from '../../task.service';
 import { BoardDataService } from "./../../board-data.service";
@@ -12,12 +12,11 @@ import { BoardDataService } from "./../../board-data.service";
 export class BoardComponent implements OnInit, OnDestroy {
   private unsubscribeCollector: Subject<any> = new Subject();
 
-  draggedOverColIdx: any;
-
-  private _draggedOverColIdx: Subject <number> = new Subject();
+  private _draggedOverColIdx: BehaviorSubject <number> = new BehaviorSubject(null);
   draggedOverColIdx$ = this._draggedOverColIdx.asObservable();
   tasks: any;
   boardData: any;
+  isDragOver: boolean;
 
   constructor(private taskService: TaskService, private boardDataService: BoardDataService) { }
 
@@ -26,21 +25,27 @@ export class BoardComponent implements OnInit, OnDestroy {
       this.tasks = tasks;
     });
 
+    this.taskService.isDragOver$.pipe(takeUntil(this.unsubscribeCollector)).subscribe(flag => {
+      this.isDragOver = flag;
+    });
+
     this.boardData = this.boardDataService.getBoardData();
   }
 
-  onDrop(event: DragEvent) {
+  onDrop(event: DragEvent, colIdx) {
+    if (this.isDragOver) return;
+
     event.preventDefault();
     const data = event.dataTransfer.getData("task-info");
     const task = JSON.parse(data);
-    // this.taskService.setDraggedTask(task);
+    this.taskService.setDraggedTask({...task, colIdx, areaIdx: 0});
     // this.currentIsDraggedOver = false;
 
     // this.taskService.setIsDragOver(false);
   }
 
   isDragOverCurrent(colIdx) {
-    return this.draggedOverColIdx === colIdx;
+    return this._draggedOverColIdx.value === colIdx;
   }
 
 
