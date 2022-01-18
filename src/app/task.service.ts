@@ -16,6 +16,10 @@ export class TaskService {
   private _tasks: BehaviorSubject <any> = new BehaviorSubject([]);
   tasks$ = this._tasks.asObservable();
 
+  get idx() {
+    return this._tasks.value.length;
+  }
+
   private _isDragOver: BehaviorSubject <any> = new BehaviorSubject(false);
   isDragOver$ = this._isDragOver.asObservable();
 
@@ -28,9 +32,10 @@ export class TaskService {
   }
 
   setDraggedTask(task) {
-    if (Number.isInteger(task.colIdx) && Number.isInteger(task.areaIdx)) {
-      this.deleteTask(task);
-      this.setTasks([...this._tasks.value, task]);
+    const { colIdx, areaIdx } = task;
+
+    if (Number.isInteger(colIdx) && Number.isInteger(areaIdx)) {
+      this.editTask(task, {colIdx, areaIdx});
     }
   }
 
@@ -44,11 +49,13 @@ export class TaskService {
   }
 
   addTask(task) {
-    this.setTasks([...this._tasks.value, task]);
+    this.setTasks([...this._tasks.value, {...task, id: this.idx}]);
   }
 
   editTask(task, newProps) {
-    // this.tasks = this.tasks.fil
+    this._tasks.next(
+      this._tasks.value.map((t: any) => t.id === task.id ? ({...task, newProps}) : t)
+    );
   }
 
   deleteTask(task) {
