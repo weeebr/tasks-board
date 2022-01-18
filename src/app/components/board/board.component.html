@@ -1,18 +1,43 @@
-<div class="board">
-  <ng-container *ngFor="let col of boardData.columns; let colIdx = index">
-    <div class="board-column"
-    [attr.data-col-idx]="colIdx"
-    >
-      <span class="column-title" [style.border-color]="col.color">{{ col.name }}</span>
-      <ng-container *ngFor="let area of col.areas; let areaIdx = index">
-        <app-tasks-area
-        [area]="area"
-        [areaIdx]="areaIdx"
-        [colIdx]="colIdx"
-        [draggedOverColIdx$]="draggedOverColIdx$"
-        [tasks]="getAreaTasks({colIdx, areaIdx})">
-      </app-tasks-area>
+<table class="board">
+  <thead>
+    <ng-container *ngFor="let col of boardData.columns; let colIdx = index">
+      <ng-container *ngIf="colIdx === 0">
+        <th></th>
       </ng-container>
-    </div>
-  </ng-container>
-</div>
+      <th><span class="column-title" [style.border-color]="col.color">{{ col.name }}</span></th>
+    </ng-container>
+  </thead>
+  <tbody>
+
+    <ng-container *ngFor="let area of boardData.areas; let areaIdx = index">
+      <tr>
+        <ng-container *ngFor="let col of boardData.columns; let colIdx = index">
+          <ng-container *ngIf="colIdx === 0">
+            <td class="area-name"><span>{{ area.name }}</span></td>
+          </ng-container>
+          <td
+            [attr.data-area-idx]="areaIdx"
+            [attr.data-col-idx]="colIdx"
+            [class.is-hovered]="currentMousePos && currentMousePos[0] === colIdx && currentMousePos[1] === areaIdx"
+            [class.is-dragover]="currentDragPos && currentDragPos[0] === colIdx && currentDragPos[1] === areaIdx"
+            (dragleave)="onDragLeave($event)"
+            (dragover)="onDragOver($event)"
+            (mouseenter)="onMouseEnter($event)"
+            (drop)="onDrop($event)">
+              <app-tasks-area
+                [area]="area"
+                [areaIdx]="areaIdx"
+                [colIdx]="colIdx"
+                [isHovered]="currentMousePos && currentMousePos[0] === colIdx && currentMousePos[1] === areaIdx"
+                [tasks]="getAreaTasks({colIdx, areaIdx})">
+              </app-tasks-area>
+              <!-- *ngIf="currentMousePos && currentMousePos[0] === colIdx && currentMousePos[1] === areaIdx" -->
+              <div class="add-task-area" (click)="addTask({areaIdx, colIdx})">
+                <span class="icon">+</span>
+              </div>
+            </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

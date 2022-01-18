@@ -3,12 +3,7 @@
   (drop)="onDrop($event)"
   [attr.data-area-idx]="areaIdx"
   [attr.data-col-idx]="colIdx"
-  (dragleave)="onDragLeave($event)"
-  (dragover)="onDragOver($event)"
-  (mouseover)="onMouseOver($event)"
-  (mouseleave)="onMouseLeave($event)"
   [class.is-dragover]="currentIsDraggedOver">
-  <div class="title">{{ area.name }}</div>
   <div
     class="tasks"
     [attr.data-area-idx]="areaIdx"
@@ -22,10 +17,5 @@
           [colIdx]="colIdx">
         </app-task>
       </ng-container>
-  </div>
-  <div class="add-task-area" (click)="addTask({areaIdx, colIdx})">
-    <button class="add-task">
-      <span>+</span>
-    </button>
   </div>
 </div>

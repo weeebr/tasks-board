@@ -1,50 +1,19 @@
 const boardData = {
+  areas: [
+    { name: "Today" },
+    { name: "Tomorrow" },
+    { name: "This week" },
+    { name: "Next monday" },
+    { name: "This month" },
+    { name: "2022" },
+    { name: "Someday" }
+  ],
   columns: [
-    { name: "Ich (🧠⚕️ + Tasks)", color: '#2196f3', areas: [
-      { name: "Today" },
-      { name: "Tomorrow" },
-      { name: "This week" },
-      { name: "Next monday" },
-      { name: "This month" },
-      { name: "2022" },
-      { name: "Someday" }
-    ]},
-    { name: "Freunde + Soziales", color: '#9c27b0', areas: [
-      { name: "Today" },
-      { name: "Tomorrow" },
-      { name: "This week" },
-      { name: "Next monday" },
-      { name: "This month" },
-      { name: "2022" },
-      { name: "Someday" }
-    ]},
-    { name: "Familie + Partnerschaft", color: '#e91e63', areas: [
-      { name: "Today" },
-      { name: "Tomorrow" },
-      { name: "This week" },
-      { name: "Next monday" },
-      { name: "This month" },
-      { name: "2022" },
-      { name: "Someday" }
-    ]},
-    { name: "Beruf + Finanzen", color: '#fdd835', areas: [
-      { name: "Today" },
-      { name: "Tomorrow" },
-      { name: "This week" },
-      { name: "Next monday" },
-      { name: "This month" },
-      { name: "2022" },
-      { name: "Someday" }
-    ]},
-    { name: "💪⚕️ + Fitness", color: '#8bc34a', areas: [
-      { name: "Today" },
-      { name: "Tomorrow" },
-      { name: "This week" },
-      { name: "Next monday" },
-      { name: "This month" },
-      { name: "2022" },
-      { name: "Someday" }
-    ]}
+    { name: "Ich (🧠⚕️ + Tasks)", color: "#2196f3" },
+    { name: "Freunde + Soziales", color: "#9c27b0" },
+    { name: "Familie + Partnerschaft", color: "#e91e63" },
+    { name: "Beruf + Finanzen", color: "#fdd835" },
+    { name: "💪⚕️ + Fitness", color: "#8bc34a" },
   ]
 };
 // localStorage.setItem('tasks', JSON.stringify(
