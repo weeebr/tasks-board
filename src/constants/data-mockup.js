@@ -4,7 +4,7 @@ const boardData = {
     { name: "Tomorrow" },
     { name: "This week" },
     { name: "Next monday" },
-    { name: "This month" },
+    { name: "Jan" },
     { name: "2022" },
     { name: "Someday" }
   ],
