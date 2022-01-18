@@ -1,10 +1,9 @@
 .board {
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 20px -32px;
   border-collapse: separate;
   border-spacing: 4px;
   table-layout: fixed;
-  margin-left: -32px;
 
   .column-title {
     color: #5e6c84;
