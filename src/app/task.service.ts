@@ -58,7 +58,8 @@ export class TaskService {
     console.log(this._tasks.value, tasks);
     if (tasks.length > 0) {
       this.setTasks(tasks);
+    } else {
+      this.setTasks([]);
     }
-    this.setTasks([]);
   }
 }
