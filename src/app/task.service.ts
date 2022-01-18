@@ -35,11 +35,11 @@ export class TaskService {
   }
 
   getTasks() {
-    return JSON.parse(sessionStorage.getItem('tasks')) || [];
+    return JSON.parse(localStorage.getItem('tasks')) || [];
   }
 
   setTasks(tasks) {
-    sessionStorage.setItem('tasks', JSON.stringify(tasks));
+    localStorage.setItem('tasks', JSON.stringify(tasks));
     this._tasks.next(tasks);
   }
 

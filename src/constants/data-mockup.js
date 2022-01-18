@@ -47,7 +47,7 @@ const boardData = {
     ]}
   ]
 };
-// sessionStorage.setItem('tasks', JSON.stringify(
+// localStorage.setItem('tasks', JSON.stringify(
 const tasks = [
   {
     "areaIdx": 0,
