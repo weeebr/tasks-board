@@ -36,6 +36,7 @@ export class TaskService {
 
     if (Number.isInteger(colIdx) && Number.isInteger(areaIdx)) {
       this.editTask(task, {colIdx, areaIdx});
+      this.setTasks(this._tasks.value);
     }
   }
 
