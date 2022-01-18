@@ -54,7 +54,7 @@ export class TaskService {
 
   editTask(task, newProps) {
     this._tasks.next(
-      this._tasks.value.map((t: any) => t.id === task.id ? ({...task, newProps}) : t)
+      this._tasks.value.map((t: any) => t.id === task.id ? ({...task, ...newProps}) : t)
     );
   }
 
