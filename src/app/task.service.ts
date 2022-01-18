@@ -28,7 +28,7 @@ export class TaskService {
   }
 
   setDraggedTask(task) {
-    if (task.colIdx && task.areaIdx) {
+    if (Number.isInteger(task.colIdx) && Number.isInteger(task.areaIdx)) {
       this.deleteTask(task);
       this.setTasks([...this._tasks.value, task]);
     }

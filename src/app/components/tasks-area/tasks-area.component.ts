@@ -31,7 +31,7 @@ export class TasksAreaComponent implements OnInit, OnDestroy {
     });
 
     this.draggedOverColIdx$.pipe(takeUntil(this.unsubscribeCollector)).subscribe(idx => {
-      this.currentIsDraggedOver = idx === this.colIdx && this.areaIdx === 0;
+      this.currentIsDraggedOver = idx === this.colIdx;
     });
 
     this.taskAreaService.unhoverAll$.pipe(takeUntil(this.unsubscribeCollector)).subscribe(idx => {
@@ -55,6 +55,7 @@ export class TasksAreaComponent implements OnInit, OnDestroy {
     const target = event.target as HTMLElement;
     const colIdx = Number.parseInt(target.getAttribute('data-col-idx'));
     const areaIdx = Number.parseInt(target.getAttribute('data-area-idx'));
+    console.log(data, colIdx, areaIdx);
     this.taskService.setDraggedTask({...task, colIdx, areaIdx});
     this.currentIsDraggedOver = false;
     this.taskService.setIsDragOver(true);

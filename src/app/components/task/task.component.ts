@@ -8,6 +8,8 @@ import { TaskService } from '../../task.service';
 })
 export class TaskComponent implements OnInit {
   @Input() task: any;
+  @Input() areaIdx: any;
+  @Input() colIdx: any;
   isDragOver = false;
   isHovered = false;
 
@@ -31,6 +33,18 @@ export class TaskComponent implements OnInit {
 
   deleteTask(task) {
     this.taskService.deleteTask(task);
+  }
+
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("task-info");
+    const task = JSON.parse(data);
+    const target = event.target as HTMLElement;
+    const colIdx = Number.parseInt(target.getAttribute('data-col-idx'));
+    const areaIdx = Number.parseInt(target.getAttribute('data-area-idx'));
+    console.log(data, colIdx, areaIdx);
+    this.taskService.setDraggedTask({...task, colIdx, areaIdx});
+    this.taskService.setIsDragOver(true);
   }
 
   getTaskInfo() {

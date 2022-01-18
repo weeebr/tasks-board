@@ -32,23 +32,6 @@ export class BoardComponent implements OnInit, OnDestroy {
     this.boardData = this.boardDataService.getBoardData();
   }
 
-  onDrop(event: DragEvent, colIdx) {
-    if (this.isDragOver) return;
-
-    event.preventDefault();
-    const data = event.dataTransfer.getData("task-info");
-    const task = JSON.parse(data);
-    this.taskService.setDraggedTask({...task, colIdx, areaIdx: 0});
-    // this.currentIsDraggedOver = false;
-
-    // this.taskService.setIsDragOver(false);
-  }
-
-  isDragOverCurrent(colIdx) {
-    return this._draggedOverColIdx.value === colIdx;
-  }
-
-
   onDragOver(event: DragEvent) {
     event.preventDefault();
     const target = event.target as HTMLElement;
@@ -58,12 +41,13 @@ export class BoardComponent implements OnInit, OnDestroy {
 
   onDragLeave() {
     // this.draggedOverColIdx = null;
+    console.log('leave');
   }
 
-  getAreaTasks(colIdx, areaIdx) {
-    return this.tasks && this.tasks.length > 0
-    ? this.tasks.filter(t => t.colIdx === colIdx && t.areaIdx === areaIdx)
-    : [];
+  getAreaTasks({colIdx, areaIdx}) {
+    if (!this.tasks || this.tasks.length === 0) return [];
+
+    return this.tasks.filter(t => t.colIdx === colIdx && t.areaIdx === areaIdx);
   }
 
   ngOnDestroy(): void {

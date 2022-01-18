@@ -7,7 +7,7 @@
   (dragover)="onDragOver($event)"
   (mouseover)="onMouseOver($event)"
   (mouseleave)="onMouseLeave($event)"
-  [class.current-is-dragover]="currentIsDraggedOver">
+  [class.is-dragover]="currentIsDraggedOver">
   <div class="title">{{ area.name }}</div>
   <div
     class="tasks"
@@ -16,7 +16,11 @@
     (drop)="onDrop($event)"
     [class.is-dragover]="isDragOver">
       <ng-container *ngFor="let task of tasks">
-        <app-task [task]="task"></app-task>
+        <app-task
+          [task]="task"
+          [areaIdx]="areaIdx"
+          [colIdx]="colIdx">
+        </app-task>
       </ng-container>
   </div>
   <div class="add-task-area" (click)="addTask({areaIdx, colIdx})">
