@@ -41,7 +41,7 @@ export class TaskService {
   }
 
   getTasks() {
-    return JSON.parse(localStorage.getItem('tasks')) || [];
+    return JSON.parse(localStorage.tasks) || [];
   }
 
   setTasks(tasks) {
