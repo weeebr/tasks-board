@@ -46,7 +46,13 @@ export class TaskService {
 
   setTasks(tasks) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    this._tasks.next(tasks);
+
+    const uniqTasks = [...tasks.reduce((a,b) => {
+      a.set(b.id, b);
+      return a;
+    }, new Map()).values()];
+
+    this._tasks.next(uniqTasks);
   }
 
   addTask(task) {
