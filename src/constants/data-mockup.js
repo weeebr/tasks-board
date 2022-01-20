@@ -19,22 +19,10 @@ const boardData = {
 // localStorage.setItem('tasks', JSON.stringify(
 const tasks = [
   {
-      "id": 0,
-      "areaIdx": 0,
-      "colIdx": 0,
-      "title": "Schneiderin"
-  },
-  {
       "id": 1,
-      "areaIdx": 0,
+      "areaIdx": 1,
       "colIdx": 0,
       "title": "MSC"
-  },
-  {
-      "id": 2,
-      "areaIdx": 0,
-      "colIdx": 0,
-      "title": "Einscannen"
   },
   {
       "id": 3,
@@ -61,12 +49,6 @@ const tasks = [
       "title": "No weed"
   },
   {
-      "id": 7,
-      "areaIdx": 1,
-      "colIdx": 4,
-      "title": "Migros"
-  },
-  {
       "id": 8,
       "areaIdx": 3,
       "colIdx": 3,
@@ -79,20 +61,8 @@ const tasks = [
       "title": "Kochen"
   },
   {
-      "id": 11,
-      "areaIdx": 1,
-      "colIdx": 0,
-      "title": "Brot einkaufen"
-  },
-  {
-      "id": 12,
-      "areaIdx": 0,
-      "colIdx": 0,
-      "title": "Therapie"
-  },
-  {
       "id": 13,
-      "areaIdx": 1,
+      "areaIdx": 0,
       "colIdx": 0,
       "title": "Bettrecherche"
   },
@@ -157,12 +127,6 @@ const tasks = [
       "title": "Sey"
   },
   {
-      "id": 24,
-      "areaIdx": 0,
-      "colIdx": 1,
-      "title": "Mama"
-  },
-  {
       "id": 25,
       "areaIdx": 2,
       "colIdx": 0,
@@ -187,12 +151,6 @@ const tasks = [
       "title": "Bologna (Apr)"
   },
   {
-      "id": 29,
-      "areaIdx": 0,
-      "colIdx": 0,
-      "title": "Familienfilme"
-  },
-  {
       "id": 30,
       "areaIdx": 6,
       "colIdx": 0,
@@ -209,12 +167,6 @@ const tasks = [
       "areaIdx": 1,
       "colIdx": 0,
       "title": "Buch lesen"
-  },
-  {
-      "id": 33,
-      "areaIdx": 0,
-      "colIdx": 3,
-      "title": "Neon: eBill Merki"
   },
   {
       "id": 34,
@@ -235,35 +187,71 @@ const tasks = [
       "title": "Michal"
   },
   {
-      "areaIdx": 1,
+      "areaIdx": 0,
       "colIdx": 1,
       "title": "William",
       "id": 37
   },
   {
-      "areaIdx": 1,
+      "areaIdx": 0,
       "colIdx": 1,
       "title": "Luis",
       "id": 38
   },
   {
-      "areaIdx": 1,
-      "colIdx": 1,
-      "title": "Tamino Feedback Board",
+      "areaIdx": 5,
+      "colIdx": 4,
+      "title": "Zahnarzt",
+      "id": 40
+  },
+  {
+      "areaIdx": 5,
+      "colIdx": 4,
+      "title": "Zahnarzt",
+      "id": 40
+  },
+  {
+      "areaIdx": 3,
+      "colIdx": 0,
+      "title": "Velo => Plus",
       "id": 38
   },
   {
-      "areaIdx": 0,
+      "areaIdx": 2,
       "colIdx": 3,
       "title": "ledger erst connecten, dann metamask ok",
       "id": 39
   },
   {
-      "areaIdx": 4,
-      "colIdx": 4,
-      "title": "Zahnarzt",
+      "areaIdx": 0,
+      "colIdx": 3,
+      "title": "Discord Fishtank",
       "id": 40
+  },
+  {
+      "areaIdx": 4,
+      "colIdx": 0,
+      "title": "Schreibe ein Essay: Wolf",
+      "id": 41
+  },
+  {
+      "areaIdx": 2,
+      "colIdx": 3,
+      "title": "Binance => Metamask",
+      "id": 38
+  },
+  {
+      "areaIdx": 0,
+      "colIdx": 0,
+      "title": "Kaffee",
+      "id": 37
+  },
+  {
+      "areaIdx": 0,
+      "colIdx": 0,
+      "title": "Papierrollen/Pflanzen?",
+      "id": 38
   }
-]
+];
 
 export { boardData, tasks }
