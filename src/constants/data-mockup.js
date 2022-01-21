@@ -20,7 +20,7 @@ const boardData = {
 const tasks = [
   {
       "id": 1,
-      "areaIdx": 1,
+      "areaIdx": 0,
       "colIdx": 0,
       "title": "MSC"
   },
@@ -59,12 +59,6 @@ const tasks = [
       "areaIdx": 1,
       "colIdx": 4,
       "title": "Kochen"
-  },
-  {
-      "id": 13,
-      "areaIdx": 0,
-      "colIdx": 0,
-      "title": "Bettrecherche"
   },
   {
       "id": 14,
@@ -121,12 +115,6 @@ const tasks = [
       "title": "Alex"
   },
   {
-      "id": 23,
-      "areaIdx": 0,
-      "colIdx": 1,
-      "title": "Sey"
-  },
-  {
       "id": 25,
       "areaIdx": 2,
       "colIdx": 0,
@@ -164,15 +152,9 @@ const tasks = [
   },
   {
       "id": 32,
-      "areaIdx": 1,
+      "areaIdx": 0,
       "colIdx": 0,
       "title": "Buch lesen"
-  },
-  {
-      "id": 34,
-      "areaIdx": 1,
-      "colIdx": 1,
-      "title": "Tamino (Do)"
   },
   {
       "id": 35,
@@ -188,60 +170,6 @@ const tasks = [
   },
   {
       "areaIdx": 0,
-      "colIdx": 1,
-      "title": "William",
-      "id": 37
-  },
-  {
-      "areaIdx": 0,
-      "colIdx": 1,
-      "title": "Luis",
-      "id": 38
-  },
-  {
-      "areaIdx": 5,
-      "colIdx": 4,
-      "title": "Zahnarzt",
-      "id": 40
-  },
-  {
-      "areaIdx": 5,
-      "colIdx": 4,
-      "title": "Zahnarzt",
-      "id": 40
-  },
-  {
-      "areaIdx": 3,
-      "colIdx": 0,
-      "title": "Velo => Plus",
-      "id": 38
-  },
-  {
-      "areaIdx": 2,
-      "colIdx": 3,
-      "title": "ledger erst connecten, dann metamask ok",
-      "id": 39
-  },
-  {
-      "areaIdx": 0,
-      "colIdx": 3,
-      "title": "Discord Fishtank",
-      "id": 40
-  },
-  {
-      "areaIdx": 4,
-      "colIdx": 0,
-      "title": "Schreibe ein Essay: Wolf",
-      "id": 41
-  },
-  {
-      "areaIdx": 2,
-      "colIdx": 3,
-      "title": "Binance => Metamask",
-      "id": 38
-  },
-  {
-      "areaIdx": 0,
       "colIdx": 0,
       "title": "Kaffee",
       "id": 37
@@ -251,6 +179,30 @@ const tasks = [
       "colIdx": 0,
       "title": "Papierrollen/Pflanzen?",
       "id": 38
+  },
+  {
+      "areaIdx": 0,
+      "colIdx": 3,
+      "title": "Discord Fishtank",
+      "id": 40
+  },
+  {
+      "areaIdx": 2,
+      "colIdx": 3,
+      "title": "ledger erst connecten, dann metamask ok",
+      "id": 39
+  },
+  {
+      "areaIdx": 4,
+      "colIdx": 0,
+      "title": "Schreibe ein Essay: Wolf",
+      "id": 41
+  },
+  {
+      "areaIdx": 5,
+      "colIdx": 4,
+      "title": "Zahnarzt",
+      "id": 33
   }
 ];
 
