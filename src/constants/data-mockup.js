@@ -1,10 +1,9 @@
 const boardData = {
   areas: [
     { name: "Today" },
-    { name: "Tomorrow" },
     { name: "This week" },
-    { name: "Next monday" },
-    { name: "Jan" },
+    { name: "Next week" },
+    { name: "in 6 months" },
     { name: "2022" },
     { name: "Someday" }
   ],
