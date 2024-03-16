@@ -9,6 +9,6 @@
   (drop)="onDrop($event)"
   (dragstart)="onDrag($event)"
   >
-  {{ task.title }}
+  <span>{{ task.title }}</span>
   <button class="delete-task" (click)="deleteTask(task)"><span>✓</span></button>
 </div>

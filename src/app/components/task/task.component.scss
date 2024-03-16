@@ -2,10 +2,6 @@
   margin-bottom: 5px;
   font-size: 14px;
   color: rgba(66, 82, 110, 1);
-  cursor: grab;
-  border-width: 0;
-  border-style: solid;
-  border-color: #e2e8f0;
   box-sizing: border-box;
   display: flex;
   flex-grow: 1;
@@ -19,6 +15,17 @@
   box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 2px 0px;
   position: relative;
   cursor: grab;
+
+  @media screen and (max-width: 1300px) {
+    font-size: 10px;
+  }
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+  }
 
   &:hover {
     background: #ebecf0;
