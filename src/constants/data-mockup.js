@@ -1,18 +1,18 @@
 const boardData = {
   areas: [
-    { name: "Today" },
-    { name: "This week" },
-    { name: "Next week" },
-    { name: "in 6 months" },
-    { name: "2022" },
+    { name: "Overdue" },
+    { name: "Urgent" },
+    { name: "Soon" },
+    { name: "within 1 month" },
     { name: "Someday" }
   ],
   columns: [
-    { name: "Ich (🧠⚕️ + Tasks)", color: "#2196f3" },
-    { name: "Freunde + Soziales", color: "#9c27b0" },
-    { name: "Familie + Partnerschaft", color: "#e91e63" },
-    { name: "Beruf + Finanzen", color: "#fdd835" },
-    { name: "💪⚕️ + Fitness", color: "#8bc34a" },
+    { name: "Home 🏠", color: "#2196f3" },
+    { name: "People 👫", color: "#9c27b0" },
+    { name: "Admin 📅", color: "#e91e63" },
+    { name: "Work 💼", color: "#fdd835" },
+    { name: "Money 📈", color: "#fdd835" },
+    { name: "Learning 🌱 ", color: "#8bc34a" },
   ]
 };
 // localStorage.setItem('tasks', JSON.stringify(
