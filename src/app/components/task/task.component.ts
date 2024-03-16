@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { TaskService } from '../../task.service';
 
 @Component({
@@ -31,12 +32,12 @@ export class TaskComponent implements OnInit {
     this.isHovered = true;
   }
 
-  deleteTask(task) {
-    this.taskService.deleteTask(task);
+  deleteTask(event, task) {
+    this.taskService.deleteTask(event, task);
   }
 
   onDrop(event: DragEvent) {
-    event.preventDefault();
+    event.stopPropagation();
     const data = event.dataTransfer.getData("task-info");
     const task = JSON.parse(data);
     const target = event.target as HTMLElement;

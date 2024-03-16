@@ -65,7 +65,8 @@ export class TaskService {
     );
   }
 
-  deleteTask(task) {
+  deleteTask(event, task) {
+    event.stopPropagation();
     const tasks = Array.from(this._tasks.value);
     const taskIdx = tasks.findIndex((t: any) => t.colIdx === task.colIdx && t.areaIdx === task.areaIdx && t.title === task.title);
     tasks.splice(taskIdx, 1);
