@@ -54,7 +54,7 @@ export class TaskService {
   }
 
   addTask(task) {
-    if (task) {
+    if (task.title) {
       this.setTasks([...this._tasks.value, {...task, id: this.idx}]);
     }
   }
