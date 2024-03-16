@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -54,7 +54,9 @@ export class TaskService {
   }
 
   addTask(task) {
-    this.setTasks([...this._tasks.value, {...task, id: this.idx}]);
+    if (task) {
+      this.setTasks([...this._tasks.value, {...task, id: this.idx}]);
+    }
   }
 
   editTask(task, newProps) {
