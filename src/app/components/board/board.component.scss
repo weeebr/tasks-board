@@ -37,6 +37,7 @@
     min-width: 17%;
     border-radius: 2px;
     background: #f4f5f7;
+    transition: all 1.1s ease;
     vertical-align: top;
     height: 59px;
     padding: 12px;
@@ -49,6 +50,7 @@
       .add-task-area {
         height: 4px;
         transition: all 0.3s ease;
+        transition-delay: 600ms;
         position: relative;
 
         &::before {
