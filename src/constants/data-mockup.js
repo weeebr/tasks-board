@@ -7,7 +7,7 @@ const boardData = {
     { name: "Someday" }
   ],
   columns: [
-    { name: "Home 🏠", color: "#2196f3" },
+    { name: "Me + Home 🏠", color: "#2196f3" },
     { name: "People 👫", color: "#9c27b0" },
     { name: "Admin 📅", color: "#e91e63" },
     { name: "Work 💼", color: "#fdd835" },
