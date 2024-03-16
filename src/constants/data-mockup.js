@@ -7,13 +7,13 @@ const boardData = {
     { name: "Someday" }
   ],
   columns: [
-    { name: "Me 💪⚕️", color: "#2196f3" },
-    { name: "Home 🏠", color: "#2196f3" },
-    { name: "People 👫", color: "#9c27b0" },
-    { name: "Admin 📅", color: "#e91e63" },
-    { name: "Work 💼", color: "#fdd835" },
-    { name: "Money 📈", color: "#fdd835" },
-    { name: "Learning 🌱 ", color: "#8bc34a" },
+      { name: "Work 💼", color: "#fdd835" },
+      { name: "Money 📈", color: "#fdd835" },
+      { name: "People 👫", color: "#9c27b0" },
+      { name: "Learning 🌱 ", color: "#8bc34a" },
+      { name: "Me 💪⚕️", color: "#2196f3" },
+      { name: "Home 🏠", color: "#2196f3" },
+      { name: "Admin 📅", color: "#e91e63" },
   ]
 };
 // localStorage.setItem('tasks', JSON.stringify(
