@@ -23,6 +23,7 @@
             (dragleave)="onDragLeave($event)"
             (dragover)="onDragOver($event)"
             (mouseenter)="onMouseEnter($event)"
+            (click)="addTask({areaIdx, colIdx})"
             (drop)="onDrop($event)">
               <app-tasks-area
                 [area]="area"
@@ -32,8 +33,7 @@
                 [tasks]="getAreaTasks({colIdx, areaIdx})">
               </app-tasks-area>
               <!-- *ngIf="currentMousePos && currentMousePos[0] === colIdx && currentMousePos[1] === areaIdx" -->
-              <div class="add-task-area" (click)="addTask({areaIdx, colIdx})">
-                <span class="icon">+</span>
+              <div class="add-task-area">
               </div>
             </td>
         </ng-container>
