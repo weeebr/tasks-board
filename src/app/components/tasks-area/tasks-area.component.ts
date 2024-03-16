@@ -1,8 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { TaskAreaService } from '../../task-area.service';
 import { TaskService } from '../../task.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tasks-area',
@@ -51,7 +52,6 @@ export class TasksAreaComponent implements OnInit, OnDestroy {
     const target = event.target as HTMLElement;
     const colIdx = Number.parseInt(target.getAttribute('data-col-idx'));
     const areaIdx = Number.parseInt(target.getAttribute('data-area-idx'));
-    console.log(data, colIdx, areaIdx);
     this.taskService.setDraggedTask({...task, colIdx, areaIdx});
     this.currentIsDraggedOver = false;
     this.taskService.setIsDragOver(true);

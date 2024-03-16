@@ -1,9 +1,10 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+
+import { BoardDataService } from "./../../board-data.service";
 import { TaskAreaService } from '../../task-area.service';
 import { TaskService } from '../../task.service';
-import { BoardDataService } from "./../../board-data.service";
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-board',
@@ -44,7 +45,6 @@ export class BoardComponent implements OnInit, OnDestroy {
     const target = event.target as HTMLElement;
     const [ colIdx, areaIdx ] = this.getIndexes(target);
 
-    console.log(data, colIdx, areaIdx);
     this.taskService.setDraggedTask({...task, colIdx, areaIdx});
     this.taskService.setIsDragOver(true);
     this.currentDragPos = null;

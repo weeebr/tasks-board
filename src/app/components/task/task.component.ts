@@ -42,7 +42,6 @@ export class TaskComponent implements OnInit {
     const target = event.target as HTMLElement;
     const colIdx = Number.parseInt(target.getAttribute('data-col-idx'));
     const areaIdx = Number.parseInt(target.getAttribute('data-area-idx'));
-    console.log(data, colIdx, areaIdx);
     this.taskService.setDraggedTask({...task, colIdx, areaIdx});
     this.taskService.setIsDragOver(true);
   }

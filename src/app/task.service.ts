@@ -69,7 +69,6 @@ export class TaskService {
     const tasks = Array.from(this._tasks.value);
     const taskIdx = tasks.findIndex((t: any) => t.colIdx === task.colIdx && t.areaIdx === task.areaIdx && t.title === task.title);
     tasks.splice(taskIdx, 1);
-    console.log(this._tasks.value, tasks);
     if (tasks.length > 0) {
       this.setTasks(tasks);
     } else {
