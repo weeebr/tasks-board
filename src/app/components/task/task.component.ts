@@ -13,10 +13,14 @@ export class TaskComponent implements OnInit {
   @Input() colIdx: any;
   isDragOver = false;
   isHovered = false;
+  mobile: boolean;
 
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
+    if (window.innerWidth < 660) { 
+      this.mobile = true;
+    };
   }
 
   onDrag(event: DragEvent) {

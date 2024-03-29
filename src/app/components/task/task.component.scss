@@ -16,6 +16,11 @@
   position: relative;
   cursor: grab;
 
+  &.mobile {
+    background-color: #f3f4f7;
+    box-shadow: none;
+  }
+
   @media screen and (max-width: 1300px) {
     font-size: 10px;
   }

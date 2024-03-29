@@ -19,6 +19,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   private _draggedOverColIdx: BehaviorSubject <number> = new BehaviorSubject(null);
   draggedOverColIdx$ = this._draggedOverColIdx.asObservable();
   tasks: any;
+  mobile: boolean;
   boardData: any;
   isDragOver: boolean;
   currentDragPos: number[];
@@ -27,6 +28,10 @@ export class BoardComponent implements OnInit, OnDestroy {
   constructor(private taskService: TaskService, private taskAreaService: TaskAreaService, private boardDataService: BoardDataService) { }
 
   ngOnInit(): void {
+    console.log('<fff>', `window.innerWidth: `, window.innerWidth);
+    if (window.innerWidth < 660) { 
+      this.mobile = true;
+    }; 
     this.taskService.tasks$.pipe(takeUntil(this.unsubscribeCollector)).subscribe(tasks => {
       this.tasks = tasks;
     });
