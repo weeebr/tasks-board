@@ -31,10 +31,6 @@ export class BoardComponent implements OnInit, OnDestroy {
       this.tasks = tasks;
     });
 
-    this.taskService.isDragOver$.pipe(takeUntil(this.unsubscribeCollector)).subscribe(flag => {
-      this.isDragOver = flag;
-    });
-
     this.boardData = this.boardDataService.getBoardData();
   }
 
@@ -46,7 +42,6 @@ export class BoardComponent implements OnInit, OnDestroy {
     const [ colIdx, areaIdx ] = this.getIndexes(target);
 
     this.taskService.setDraggedTask({...task, colIdx, areaIdx});
-    this.taskService.setIsDragOver(true);
     this.currentDragPos = null;
   }
 
@@ -80,6 +75,7 @@ export class BoardComponent implements OnInit, OnDestroy {
 
   onDragLeave(event) {
     event.preventDefault();
+    this.currentDragPos = null;
   }
 
   getAreaTasks({colIdx, areaIdx}) {

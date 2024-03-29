@@ -20,17 +20,11 @@ export class TasksAreaComponent implements OnInit, OnDestroy {
   @Input() draggedOverColIdx$: any;
   @Input() isHovered: any;
 
-
-  currentIsDraggedOver: boolean;
   isDragOver: boolean;
 
   constructor(private taskService: TaskService, private taskAreaService: TaskAreaService) { }
 
   ngOnInit(): void {
-    this.taskService.isDragOver$.pipe(takeUntil(this.unsubscribeCollector)).subscribe(flag => {
-      this.isDragOver = flag;
-    });
-
     this.taskAreaService.unhoverAll$.pipe(takeUntil(this.unsubscribeCollector)).subscribe(idx => {
       this.isHovered = false;
     });
@@ -38,11 +32,10 @@ export class TasksAreaComponent implements OnInit, OnDestroy {
 
   onDragOver(event: DragEvent) {
     event.preventDefault();
-    this.currentIsDraggedOver = true;
   }
 
   onDragLeave(event) {
-    this.currentIsDraggedOver = false;
+    this.isHovered = false;
   }
 
   onDrop(event: DragEvent) {
@@ -53,8 +46,7 @@ export class TasksAreaComponent implements OnInit, OnDestroy {
     const colIdx = Number.parseInt(target.getAttribute('data-col-idx'));
     const areaIdx = Number.parseInt(target.getAttribute('data-area-idx'));
     this.taskService.setDraggedTask({...task, colIdx, areaIdx});
-    this.currentIsDraggedOver = false;
-    this.taskService.setIsDragOver(true);
+    this.isHovered = false;
   }
 
   ngOnDestroy(): void {

@@ -18,16 +18,11 @@ export class TaskService {
     return this._tasks.value.length;
   }
 
-  private _isDragOver: BehaviorSubject <any> = new BehaviorSubject(false);
-  isDragOver$ = this._isDragOver.asObservable();
-
   constructor() {
-    this._tasks.next(this.getTasks());
+    this._tasks.next(
+      JSON.parse(localStorage.getItem('tasks')) || []
+    );
    }
-
-  setIsDragOver(flag) {
-    this._isDragOver.next(flag);
-  }
 
   setDraggedTask(task) {
     const { colIdx, areaIdx } = task;
@@ -38,19 +33,9 @@ export class TaskService {
     }
   }
 
-  getTasks() {
-    return JSON.parse(localStorage.getItem('tasks')) || [];
-  }
-
   setTasks(tasks) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-
-    const uniqTasks = [...tasks.reduce((a,b) => {
-      a.set(b.id, b);
-      return a;
-    }, new Map()).values()];
-
-    this._tasks.next(uniqTasks);
+    this._tasks.next(tasks);
   }
 
   addTask(task) {
@@ -67,13 +52,10 @@ export class TaskService {
 
   deleteTask(event, task) {
     event.stopPropagation();
-    const tasks = Array.from(this._tasks.value);
-    const taskIdx = tasks.findIndex((t: any) => t.colIdx === task.colIdx && t.areaIdx === task.areaIdx && t.title === task.title);
-    tasks.splice(taskIdx, 1);
-    if (tasks.length > 0) {
-      this.setTasks(tasks);
-    } else {
-      this.setTasks([]);
-    }
+    const { colIdx, areaIdx, title } = task;
+    
+    this.setTasks(this._tasks.value.filter(
+      (t) => t.colIdx !== colIdx && t.areaIdx !== areaIdx && t.title !== title)
+    );
   }
 }

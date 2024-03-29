@@ -20,7 +20,6 @@ export class TaskComponent implements OnInit {
   }
 
   onDrag(event: DragEvent) {
-    this.taskService.setIsDragOver(false);
     event.dataTransfer.setData("task-info", this.getTaskInfo());
   }
 
@@ -44,7 +43,6 @@ export class TaskComponent implements OnInit {
     const colIdx = Number.parseInt(target.getAttribute('data-col-idx'));
     const areaIdx = Number.parseInt(target.getAttribute('data-area-idx'));
     this.taskService.setDraggedTask({...task, colIdx, areaIdx});
-    this.taskService.setIsDragOver(true);
   }
 
   getTaskInfo() {

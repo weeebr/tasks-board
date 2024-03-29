@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { tasks } from "../constants/data-mockup";
+import { Injectable } from '@angular/core';
 import { isEqual } from "lodash";
+import { tasks } from "../constants/data-mockup";
 
 @Injectable({
   providedIn: 'root'
