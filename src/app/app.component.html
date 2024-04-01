@@ -1,2 +1,3 @@
-<app-board></app-board>
+<app-board *ngIf="!mobile"></app-board>
+<app-board-mobile *ngIf="mobile"></app-board-mobile>
 <router-outlet></router-outlet>

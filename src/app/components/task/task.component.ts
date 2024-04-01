@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { TaskService } from '../../task.service';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-task',
@@ -9,16 +9,15 @@ import { TaskService } from '../../task.service';
 })
 export class TaskComponent implements OnInit {
   @Input() task: any;
-  @Input() areaIdx: any;
+  @Input() rowIdx: any;
   @Input() colIdx: any;
-  isDragOver = false;
   isHovered = false;
   mobile: boolean;
 
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
-    if (window.innerWidth < 660) { 
+    if (window.innerWidth < 880) { 
       this.mobile = true;
     };
   }
@@ -45,8 +44,8 @@ export class TaskComponent implements OnInit {
     const task = JSON.parse(data);
     const target = event.target as HTMLElement;
     const colIdx = Number.parseInt(target.getAttribute('data-col-idx'));
-    const areaIdx = Number.parseInt(target.getAttribute('data-area-idx'));
-    this.taskService.setDraggedTask({...task, colIdx, areaIdx});
+    const rowIdx = Number.parseInt(target.getAttribute('data-row-idx'));
+    this.taskService.setDraggedTask({...task, colIdx, rowIdx});
   }
 
   getTaskInfo() {

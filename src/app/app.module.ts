@@ -1,18 +1,16 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { BoardComponent } from './components/board/board.component';
+import { BoardMobileComponent } from './components/board-mobile/board-mobile.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { TaskComponent } from './components/task/task.component';
-import { TasksAreaComponent } from './components/tasks-area/tasks-area.component';
-
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
+    BoardMobileComponent,
     TaskComponent,
-    TasksAreaComponent
   ],
   imports: [
     BrowserModule,

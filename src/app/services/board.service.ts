@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { boardData } from "../constants/data-mockup";
+import { boardData } from "../../constants/data-mockup";
 
 @Injectable({
   providedIn: 'root'
 })
-export class BoardDataService {
+export class BoardService {
   boardData: [];
 
   constructor() {
     this.boardData = boardData;
-   }
+  }
 
   getBoardData() {
-    return boardData //JSON.parse(sessionStorage.getItem('board-data'));
+    return boardData;
   }
 
   setBoardData(data) {
@@ -23,4 +22,9 @@ export class BoardDataService {
   editBoardData(data, newProps) {
     //
   }
+
+  getAreaIndexes = el => ({
+    colIdx: Number.parseInt(el.getAttribute('data-col-idx')),
+    rowIdx: Number.parseInt(el.getAttribute('data-row-idx'))
+  });
 }

@@ -1,0 +1,31 @@
+<div>
+  <ng-container *ngFor="let col of data.columns; let colIdx = index">
+    <h2 class="column-title" >{{ col.name }}</h2>
+    <ng-container *ngFor="let area of data.areas; let rowIdx = index">
+      <div 
+        class="area-name"
+        (dragenter)="onDragEnter($event, 'area')"
+       >
+          {{ area.name }}
+      </div>
+      <div class="task-area"
+        [attr.data-row-idx]="rowIdx"
+        [attr.data-col-idx]="colIdx"
+        [class.is-drag]="isDrag && startDragPos.colIdx !== colIdx && startDragPos?.rowIdx !== rowIdx"
+        (dragstart)="onDragStart($event)"
+        (dragenter)="onDragEnter($event)"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        (drop)="onDrop($event)"
+      >
+        <ng-container *ngFor="let task of getAreaTasks({colIdx, rowIdx})">
+          <app-task
+            [task]="task"
+            [rowIdx]="rowIdx"
+            [colIdx]="colIdx">
+          </app-task>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

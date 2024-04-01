@@ -1,0 +1,59 @@
+:host > div {
+  padding: 12px 2%;
+
+  .column-title {
+    color: #5e6c84;
+    padding: 4px;
+    font-size: 13px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    border-bottom: 2px solid;
+    padding-bottom: 4px;
+    margin: 12px 0;
+    display: block;
+  }
+  
+  .area-name {
+    color: #5e6c84;
+    font-size: 10px;
+    text-transform: uppercase;
+    pointer-events: none;
+    padding: 16px 0;
+    display: block;
+    background: none;
+  }
+
+  .task-area {
+    border-radius: 2px;
+    background: #f4f5f7;
+    transition: all 1.1s ease;
+    vertical-align: top;
+    position: relative;
+
+    .add-task-area {
+      display: flex;
+      cursor: pointer;
+      height: 0px;
+      justify-content: center;
+      bottom: 0;
+      width: 100%;
+      align-items: center;
+      background: #f2f2f2;
+      margin-top: 0;
+
+      .task {
+        pointer-events: none;
+      }
+    }
+
+    &.is-dragentered {
+      background: white;
+      min-height: 40px;
+    }
+  }
+}
+
+.is-dragentered {
+  background: white;
+  min-height: 40px;
+}

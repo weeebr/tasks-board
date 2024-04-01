@@ -1,36 +1,6 @@
-<div *ngIf="mobile" class="mobile">
-  <ng-container *ngFor="let col of boardData.columns; let colIdx = index">
-    <h2 class="column-title" >{{ col.name }}</h2>
-    <ng-container *ngFor="let area of boardData.areas; let areaIdx = index">
-      <h3 
-        class="area-name"
-        [attr.data-area-idx]="areaIdx"
-        [attr.data-col-idx]="colIdx"
-        [class.is-hovered]="currentMousePos && currentMousePos[0] === colIdx && currentMousePos[1] === areaIdx"
-        [class.is-dragover]="currentDragPos && currentDragPos[0] === colIdx && currentDragPos[1] === areaIdx"
-        (dragleave)="onDragLeave($event)"
-        (dragover)="onDragOver($event)"
-        (mouseenter)="onMouseEnter($event)"
-        (click)="addTask({areaIdx, colIdx})"
-        (drop)="onDrop($event)">
-          {{ area.name }}
-      </h3>
-      <div class="task-area-container">
-        <app-tasks-area
-          [area]="area"
-          [areaIdx]="areaIdx"
-          [colIdx]="colIdx"
-          [isHovered]="currentMousePos && currentMousePos[0] === colIdx && currentMousePos[1] === areaIdx"
-          [tasks]="getAreaTasks({colIdx, areaIdx})">
-        </app-tasks-area>
-      </div>
-    </ng-container>
-  </ng-container>
-</div>
-
-<table *ngIf="!mobile" class="board">
+<table>
   <thead>
-    <ng-container *ngFor="let col of boardData.columns; let colIdx = index">
+    <ng-container *ngFor="let col of data.columns; let colIdx = index">
       <ng-container *ngIf="colIdx === 0">
         <th></th>
       </ng-container>
@@ -39,32 +9,34 @@
   </thead>
   <tbody>
 
-    <ng-container *ngFor="let area of boardData.areas; let areaIdx = index">
+    <ng-container *ngFor="let area of data.areas; let rowIdx = index">
       <tr>
-        <ng-container *ngFor="let col of boardData.columns; let colIdx = index">
+        <ng-container *ngFor="let col of data.columns; let colIdx = index">
           <ng-container *ngIf="colIdx === 0">
             <td class="area-name"><span>{{ area.name }}</span></td>
           </ng-container>
           <td
-            [attr.data-area-idx]="areaIdx"
+            [attr.data-row-idx]="rowIdx"
             [attr.data-col-idx]="colIdx"
-            [class.is-hovered]="currentMousePos && currentMousePos[0] === colIdx && currentMousePos[1] === areaIdx"
-            [class.is-dragover]="currentDragPos && currentDragPos[0] === colIdx && currentDragPos[1] === areaIdx"
-            (dragleave)="onDragLeave($event)"
+            [class.is-dragover]="currentDragPos?.colIdx === colIdx && currentDragPos?.rowIdx === rowIdx"
+            [class.is-dragstart]="startDragPos?.colIdx === colIdx && startDragPos?.rowIdx === rowIdx"
+            (dragstart)="onDragStart($event)"
             (dragover)="onDragOver($event)"
-            (mouseenter)="onMouseEnter($event)"
-            (click)="addTask({areaIdx, colIdx})"
-            (drop)="onDrop($event)">
-              <app-tasks-area
-                [area]="area"
-                [areaIdx]="areaIdx"
-                [colIdx]="colIdx"
-                [isHovered]="currentMousePos && currentMousePos[0] === colIdx && currentMousePos[1] === areaIdx"
-                [tasks]="getAreaTasks({colIdx, areaIdx})">
-              </app-tasks-area>
-              <div class="add-task-area">
-              </div>
-            </td>
+            (dragleave)="onDragLeave($event)"
+            (drop)="onDrop($event)"
+            (click)="addTask({colIdx, rowIdx})"
+          >
+            <ng-container *ngFor="let task of getAreaTasks({colIdx, rowIdx})">
+              <app-task
+                [task]="task"
+                [rowIdx]="rowIdx"
+                [colIdx]="colIdx">
+              </app-task>
+            </ng-container>
+
+            <div class="add-task-area">
+            </div>
+          </td>
         </ng-container>
       </tr>
     </ng-container>

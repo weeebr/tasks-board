@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TaskService {
-  areaIdx: number;
+  rowIdx: number;
   colIdx: number;
   title:  string;
   description: string;
@@ -14,7 +14,7 @@ export class TaskService {
   private _tasks: BehaviorSubject <any> = new BehaviorSubject([]);
   tasks$ = this._tasks.asObservable();
 
-  get idx() {
+  get lastIdx() {
     return this._tasks.value.length;
   }
 
@@ -24,11 +24,20 @@ export class TaskService {
     );
    }
 
-  setDraggedTask(task) {
-    const { colIdx, areaIdx } = task;
+  onDrop(event, pos) {
+    const data = event.dataTransfer.getData("task-info");
+    const task = JSON.parse(data);
+    const target = event.target as HTMLElement;
 
-    if (Number.isInteger(colIdx) && Number.isInteger(areaIdx)) {
-      this.editTask(task, {colIdx, areaIdx});
+    this.setDraggedTask({...task, ...pos});
+  }
+
+  setDraggedTask(task) {
+    const { colIdx, rowIdx } = task;
+    console.log('<fff>', `task`);
+
+    if (Number.isInteger(colIdx) && Number.isInteger(rowIdx)) {
+      this.editTask(task, {colIdx, rowIdx});
       this.setTasks(this._tasks.value);
     }
   }
@@ -40,7 +49,7 @@ export class TaskService {
 
   addTask(task) {
     if (task.title) {
-      this.setTasks([...this._tasks.value, {...task, id: this.idx}]);
+      this.setTasks([...this._tasks.value, {...task, id: this.lastIdx}]);
     }
   }
 
@@ -52,10 +61,10 @@ export class TaskService {
 
   deleteTask(event, task) {
     event.stopPropagation();
-    const { colIdx, areaIdx, title } = task;
+    const { colIdx, rowIdx, title } = task;
     
     this.setTasks(this._tasks.value.filter(
-      (t) => t.colIdx !== colIdx && t.areaIdx !== areaIdx && t.title !== title)
+      (t) => t.colIdx !== colIdx && t.rowIdx !== rowIdx && t.title !== title)
     );
   }
 }
