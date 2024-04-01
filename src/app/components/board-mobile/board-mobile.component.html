@@ -4,6 +4,7 @@
     <ng-container *ngFor="let area of data.areas; let rowIdx = index">
       <div 
         class="area-name"
+        (click)="addTask({colIdx, rowIdx})"
         (dragenter)="onDragEnter($event, 'area')"
        >
           {{ area.name }}
